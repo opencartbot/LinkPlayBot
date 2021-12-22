@@ -1,9 +1,19 @@
 # PlayBot
-Simple web interface for LinkPlayAPI
+A simple interface for controlling Internet radio based on the LinkSprite Technologies chipset using any computer, tablet or smartphone.
+Allows you to play any custom streams and add your own m3u playlists, control the volume, switch modes.
 
 ## Listing
 - **index.html** - web interface for control player via LinkPlayAPI. Works on any browsers. Does not require a web server. To get started, replace the device IP-address 192.168.1.11 to your value.
 - **playbot.apk** - Android application for control player via LinkPlayAPI. To get started, change .apk extension to .zip, open path in archive /assets/index.html and replace the device IP-address 192.168.1.11 to your value and update archive. Change back archive extension to .apk and intstall this file on your Android.
+
+## Other applications for radio control
+- **WiiM Home**
+- **WiiM Player**
+- **AudioCast S**
+- **Auna Intelligence**
+- **4STREAM**
+- **GGMM-E series**
+- **MUZO Player**
 
 ## Supported devices
 - **Arylic** (S50Pro, A50, Up2Stream),
