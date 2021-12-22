@@ -6,6 +6,9 @@ Allows you to play any custom streams and add your own m3u playlists, control th
 - **index.html** - web interface for control player via LinkPlayAPI. Works on any browsers. Does not require a web server. To get started, replace the device IP-address 192.168.1.11 to your value.
 - **playbot.apk** - Android application for control player via LinkPlayAPI. To get started, change .apk extension to .zip, open path in archive /assets/index.html and replace the device IP-address 192.168.1.11 to your value and update archive. Change back archive extension to .apk and intstall this file on your Android.
 
+![WEB DEMO](https://github.com/opencartbot/PlayBot/blob/6e04a2ecf688df73d4bb6892f3ac8f49cd69474f/screenshots/web.jpg)
+![APK DEMO](https://github.com/opencartbot/PlayBot/blob/6e04a2ecf688df73d4bb6892f3ac8f49cd69474f/screenshots/apk.jpg)
+
 ## Other applications for radio control
 - **WiiM Home**
 - **WiiM Player**
