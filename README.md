@@ -1,7 +1,8 @@
 # PlayBot
 Simple web interface for LinkPlayAPI
 
-
+## Listing
+- **index.html** - web interface for control player. Works on any browsers. Does not require a web server. To get started, change the device IP-address 192.168.1.11 to your value
 
 ## Supported devices
 - **Arylic** (S50Pro, A50, Up2Stream),
