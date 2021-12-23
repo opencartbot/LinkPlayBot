@@ -1,10 +1,10 @@
 # PlayBot
-A simple interface for controlling Internet radio based on the LinkSprite Technologies chipset using any computer, tablet or smartphone.
+A simple interface for controlling Internet radio based on the LinkSprite chipset using any computer, tablet or smartphone.
 Allows you to play any custom streams and add your own m3u playlists, control the volume, switch modes.
 Works via HTTP GET requests on a single network.
 
 ## Listing
-- **index.html** - web interface for control player via LinkPlayAPI. Works on any browsers. Does not require a web server. To get started, replace the device IP-address 192.168.1.11 to your value.
+- **index.html** - web interface for control player via LinkPlay API. Works on any browsers. Does not require a web server. To get started, replace the device IP-address 192.168.1.11 to your value.
 - **playbot.apk** - Android application for control player via LinkPlayAPI. To get started, change .apk extension to .zip, open path in archive /assets/index.html and replace the device IP-address 192.168.1.11 to your value and update archive. Change back archive extension to .apk and intstall this file on your Android.
 
 Also contains a playlist of ukrainian radio stations, you can change his in html code in "select" tag.
@@ -24,6 +24,14 @@ Android app<br>
 - **4STREAM**
 - **GGMM-E series**
 - **MUZO Player**
+- **MedionX**
+- **Audio Pro Control**
+- **iEAST Play**
+- **Myvision Player**
+- **BluOS Controller**
+- **Belkin Soundform**
+- **Zolo Play**
+- **etc.**
 
 ## Supported devices
 - **Arylic** (S50Pro, A50, Up2Stream),
@@ -31,6 +39,7 @@ Android app<br>
 - **Audio Pro** (A10, A26, A36, A40, Addon C3/C5/C5A/C10/C-SUB, D-1, Drumfire, Link 1),
 - **Auna** (Intelligence Tube),
 - **Bauhn** (SoundMax 5),
+- **Belkin** (Soundform)
 - **Bem** (Speaker Big Mo),
 - **Centaurus** (Flyears),
 - **Champion** (AWF320),
@@ -63,6 +72,7 @@ Android app<br>
 - **Meidong** (Meidong 3119),
 - **MK** (MK Alexa Speaker),
 - **MÜZO** (Cobblestone),
+- **My Vision*
 - **Naxa** (NAS-5003, NHS-5002, NAS-5001, NAS-5000),
 - **Nexum** (Memo),
 - **Omaker** (WoW),
