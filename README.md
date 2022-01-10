@@ -72,7 +72,7 @@ Android app<br>
 - **Meidong** (Meidong 3119),
 - **MK** (MK Alexa Speaker),
 - **MÜZO** (Cobblestone),
-- **My Vision*
+- **My Vision**
 - **Naxa** (NAS-5003, NHS-5002, NAS-5001, NAS-5000),
 - **Nexum** (Memo),
 - **Omaker** (WoW),
