@@ -5,8 +5,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>PlayBot</title>
-</head>
-<body>
+<script type="text/javascript">
+
+	var dev_ip = '192.168.1.11';  //CHANGE DEVICE IP HERE
+
+	var radio_api = 'http://'+dev_ip+'/httpapi.asp?command=';
+
+	function send(command)
+	{
+		var xmlHttp = new XMLHttpRequest();
+		url = radio_api + command;
+		xmlHttp.open( "GET", url, true );
+		xmlHttp.send( null );
+		return false;
+	}
+
+	function play(stream) {
+		command = 'setPlayerCmd:play:' +stream;
+		send(command);
+	}
+
+	function volume(value) {
+		command = 'setPlayerCmd:vol:'+value;
+		send(command);
+	}
+</script>
 <style>
   body {
 	background: #000000;
@@ -32,315 +55,44 @@
     min-width: 200px;
   }
 </style>
+</head>
 
+<body>
 <h1>PlayBot</h1>
-
 <label for="radio">Radio:</label>
 <select name="radio" id="radio" onchange="play(this.value)">
-<option value="http://91.218.212.84:8000/radionv.mp3">РАДІО НВ</option>
-<option value="http://91.218.212.67:8000/stream-ps-hi">ГРОМАДСЬКЕ</option>
-<option value="http://holos.fm:8000/holos">ГОЛОС СВОБОДИ</option>
-<option value="http://fm.prm.ua:8001/prm">ПРЯМИЙ FM</option>
-<option value="http://91.218.213.49:8000/ur1-mp3">UA:УКРАЇНСЬКЕ РАДІО</option>
-<option value="http://91.218.213.49:8000/ur2-mp3">ПРОМІНЬ</option>
-<option value="http://91.218.213.49:8000/ur3-mp3">UA:КУЛЬТУРА</option>
-<option value="http://91.218.214.3:8000/una">РАДІО УНА</option>
 <option value="http://icecastlv.luxnet.ua/lux_mp3">ЛЮКС FM</option>
 <option value="http://online.hitfm.ua/HitFM_HD">ХІТ FM</option>
 <option value="http://online.nasheradio.ua/NasheRadio_HD">НАШЕ РАДІО</option>
-<option value="http://217.20.173.105:8100/best">ЄВРОПА ПЛЮС</option>
-<option value="https://cast.radiogroup.com.ua:443/avtoradio320">АВТОРАДІО</option>
 <option value="https://cast.radiogroup.com.ua:443/retro">РЕТРО FM</option>
-<option value="https://cast.radiogroup.com.ua:443/radiopyatnica320">ПЯТНИЦЯ</option>
 <option value="http://icecast.luxnet.ua/maximum_mp3">МАКСИМУМ</option>
-<option value="http://185.65.245.34:8000/kievhi">КРАЇНА ФМ</option>
-<option value="http://212.26.132.129:8000/ArmyFM">АРМІЯ FM</option>
-<option value="http://online.melodiafm.ua/MelodiaFM_HD">МЕЛОДІЯ FM</option>
-<option value="https://cast.brg.ua:443/powerfm96.aacp">POWER FM</option>
-<option value="http://online.kissfm.ua/KissFM_HD">KISS FM</option>
-<option value="https://cast.radiogroup.com.ua:443/nrj320">NRJ - ЕНЕРДЖІ</option>
-<option value="http://listen6.myradio24.com:9000/5390">KEXXX FM</option>
-<option value="http://online.rusradio.ua/RusRadio_HD">РУСКОЄ РАДІО</option>
-<option value="https://stream.radiojar.com:443/svfq9a9ccz4tv">АГРО ФМ</option>
-<option value="https://cast.radiogroup.com.ua:443/jamfm320">ДЖЕМ FM</option>
-<option value="https://cast.radiogroup.com.ua:443/jam_inshyi320">ДЖЕМ ІНШИЙ</option>
-<option value="https://cast.radiogroup.com.ua:443/loungefm320">LOUNGE FM</option>
-<option value="https://cast.radiogroup.com.ua:443/chillout320">LOUNGE FM Chill Out</option>
-<option value="http://online.radiorelax.ua/RadioRelax">РАДІО РЕЛАКС</option>
-<option value="https://listen5.myradio24.com:443/atmo">АТМОСФЕРА</option>
-<option value="http://radio.ukraudio.com:8000/channel2">РАДІО НІСАЯ</option>
-<option value="http://s02.radio-tochka.com:4870/radio">ЗАБАВА КАНАДА</option>
-<option value="http://62.122.207.161:8000/Vezha_320.nsv">ВЕЖА ФРАНКІВСЬК</option>
-<option value="http://online.1043.com.ua:8000/1043fm">ЗАХІДНИЙ ПОЛЮС ФРАНКІВСЬК</option>
-<option value="https://radio.rai.ua:9000/">РАІ РАДІО ФРАНКІВСЬК</option>
-<option value="http://195.182.22.130:8000/Streamogg">КАЛУШ FM</option>
-<option value="http://195.182.22.130:8000/shans_kalush">ШАНС КАЛУШ</option>
-<option value="http://195.114.96.103:7878/">НАДВІРНА FM</option>
-<option value="http://stream.ntktv.ua:8000/syaivo.mp3">СЯЙВО КОЛОМИЯ</option>
-<option value="http://radio.inet.kim:8000/">ХВИЛЯ ГІР ДОЛИНА</option>
-<option value="http://195.234.148.53:8000/;">ГУЦУЛЬСЬКЕ РАДІО</option>
-<option value="https://stream.urbanspaceradio.com:8443/urban-space-radio">URBAN SPACE RADIO ІФ</option>
-<option value="http://193.169.80.7:8001/efir">УХ ТЕРНОПІЛЬ</option>
-<option value="https://online.fainemisto.tv:8443/faine.ogg">ФАЙНЕ МІСТО</option>
-<option value="http://online.rusradio.ua/RusRadio_Lyric_HD">РУСКОЄ РАДІО ЛІРИКА</option>
-<option value="http://onair.lviv.fm:8000/lviv.fm">ЛЬВІВСЬКА ХВИЛЯ</option>
-<option value="https://stream320.galychyna.fm:443/live">FM ГАЛИЧИНА</option>
-<option value="http://icecast.luxnet.ua/luxlviv">ЛЮКС FM ЛЬВІВ</option>
-<option value="https://cast108372.customer.uar.net:443/vgolos320">ВГОЛОС FM ЛЬВІВ</option>
-<option value="https://live.radiopershe.com:443/liveradio">ПЕРШЕ ЛЬВІВ</option>
-<option value="http://stream.radioskovoroda.com:8000/radioskovoroda">СКОВОРОДА ЛЬВІВ</option>
-<option value="http://134.249.140.134:8000/;">ЕКО РАДІО ЛЬВІВ</option>
-<option value="http://online.fm.stryi.com:8000/stryi-fm_mp3">СТРИЙ FM</option>
-<option value="http://radio.telelan.com.ua:8000/fresh-fm_mp3">ФРЕШ FM СТРИЙ</option>
-<option value="https://complex.in.ua:443/zolHD">СМАК ЗОЛОЧІВ</option>
-<option value="https://complex.in.ua:443/turka">КАРПАТСЬКИЙ ГОМІН ТУРКА</option>
-<option value="http://online.sokal.lviv.ua:8000/sokalfm256.mp3">СОКАЛЬ FM</option>
-<option value="http://91.200.114.254:8048/">ТВОЄ РАДІО ДРОГОБИЧ</option>
-<option value="https://complex.in.ua:443/live">ВІЛЬНЕ ЖОВКВА</option>
-<option value="https://complex.in.ua:443/skole">БЕСКИДИ СКОЛЕ</option>
-<option value="https://complex.in.ua:443/buskfm">БУСЬКЕ РАДІО</option>
-<option value="https://complex.in.ua:443/stsambir">ГОЛОС ПРИКАРПАТТЯ САМБІР</option>
-<option value="http://complex.in.ua/sambirPostup">ПОСТУП САМБІР</option>
-<option value="http://complex.in.ua/brodyHD">БРОДИ FM</option>
-<option value="http://hot.groza.ua:8000/neoradio">НЕОРАДІО ЧЕРВОНОГРАД</option>
-<option value="https://complex.in.ua:443/Yavir.m3u">ЯВІР FM ЯВОРІВ</option>
-<option value="https://complex.in.ua:443/truskavets">СВОЯ ХВИЛЯ ТРУСКАВЕЦЬ</option>
-<option value="https://complex.in.ua:443/zhudachiv">ЖИДАЧІВ FM</option>
-<option value="https://radio.zfm.com.ua:8443/zfm">ЗАХІД FM+</option>
-<option value="http://stream.mjoy.ua:8000/radio-z-kryjivky">РАДІО З КРИЇВКИ ЛЬВІВ</option>
-<option value="http://194.44.230.64:8000/liveradio.mp3">РАДЕХІВ</option>
-<option value="https://freeuk10.listen2myradio.com:443/live.mp3?typeportmount=s1_16053_stream_199717037">СЛОВО БОРИСЛАВ</option>
-<option value="https://listen6.myradio24.com:443/73212">С.Р.А.К.А - КУЗЬМА</option>
-<option value="http://80.77.32.252:8000/sid_fm_128">СІМЯ І ДІМ FM ЛУЦЬК</option>
-<option value="http://195.234.148.51:8000/;">ЗАКАРПАТТЯ ФМ</option>
-<option value="http://91.218.213.49:8000/tysafm-mp3">ТИСА FM УЖГОРОД</option>
-<option value="http://de1.internet-radio.com:8277/;">ХУСТ</option>
-<option value="https://video1.getstreamhosting.com:8298/stream">РАДІО 7 ХУСТ</option>
-<option value="http://213.174.8.35:8002/;">ВЕРСІЯ УЖГОРОД</option>
-<option value="http://radio2.tirek.hu:8000/sionelo">Pulzus FM Берегово</option>
-<option value="http://91.205.207.98:8081/acc.mp3">Радіо 10 ЧЕРНІВЦІ</option>
-<option value="http://51.83.132.157/128">ТВА ЧЕРНІВЦІ</option>
-<option value="http://online.blysk.com.ua:8000/">БЛИСК ЧЕРНІВЦІ</option>
-<option value="http://185.233.118.107:8000/stream">БУКОВИНСЬКА ХВИЛЯ</option>
-<option value="https://c4.radioboss.fm:18260/stream">Radio Cernăuți Чернівці</option>
-<option value="https://a7.radioheart.ru:9045/RH42539">СОК FM СОКИРЯНИ</option>
-<option value="http://195.95.206.28/OkeyFM">OK FM Хмельницький</option>
-<option value="http://provinciya.stream.laut.fm/provinciya">Радіо ПРОвінція Деражня</option>
-<option value="http://online2.radiotrek.rv.ua:8000/MP3_128">ТРЕК РІВНЕ</option>
-<option value="http://oa.edu.ua:8000/live">ОСТРАДІО ОСТРОГ</option>
-<option value="https://radiotakt.com.ua:8443/takt.mp3">ТАКТ ВІННИЦЯ</option>
-<option value="http://194.28.172.211:8000/radiomistonadbugom">МІСТО НАД БУГОМ ВІННИЦЯ</option>
-<option value="http://31.41.221.101:8000/radio3">ЛЮКС FM ВІННИЦЯ</option>
-<option value="http://31.41.221.101:8000/radio1">ЛАДА FM ГАЙСИН</option>
-<option value="http://lada.fm:8000/radio5">ЛАДА FM БЕРШАДЬ</option>
-<option value="https://radio-bar.com.ua:8000/radiobar">РАДІО БАР</option>
-<option value="http://todor.ua:8010/hit-fm">Хіт FM Ладижин</option>
-<option value="http://todor.ua:8010/p-radio">ПОДІЛЬСЬКЕ РАДІО</option>
-<option value="http://109.251.190.11:8888/live">Z-RADIO ЖИТОМИР</option>
-<option value="http://46.219.19.29:8004/onair">КРОК ЖИТОМИР</option>
-<option value="http://95.46.74.92:8102/live.fm">LIVE FM БЕРДИЧІВ</option>
-<option value="http://176.98.76.30:8000/?q=320">УМАНЬ</option>
-<option value="http://krucha.ddns.net:8000/">КРУЧІ КАНІВ</option>
-<option value="http://176.67.8.31:8000/stream">МАГНІТ КАНІВ</option>
-<option value="http://176.67.0.149:8275/live">ТЯСМИН СМІЛА</option>
-<option value="http://stream.radiodomivka.com:8000/listen">ДОМІВКА</option>
-<option value="http://93.183.216.155:8000/live">ІЗЮМ</option>
-<option value="https://s3.radio.co:443/sa3e464c40/listen">ІСЛАНДІЯ</option>
-<option value="http://radio.ukraudio.com:8000/channel5">КАРАМЕЛЬКА</option>
-<option value="http://complex.in.ua/b320">БОГУСЛАВ ФМ</option>
-<option value="http://91.207.245.57:8000/UA:Romen">РОМЕН РОМНИ</option>
-<option value="http://radio.ukraudio.com:8000/channel1">РОДИННЕ РАДІО</option>
-<option value="http://radio.trizub-fm.online:8001/radio.mp3">ТРИЗУБ FM</option>
-<option value="https://listen6.myradio24.com:443/50904">УКР ЕСТРАДА</option>
-<option value="http://public.kherson.fm:8000/khersonfm">ХЕРСОН FM</option>
-<option value="http://vobu.com.ua:8000/yaskrave-192">ЯСКРАВЕ РАДІО</option>
-<option value="http://radio.stilnoe.fm:8080/radio-stilnoe">ПЕРЕЦЬ FM</option>
-<option value="http://stream.mjoy.ua:8000/kredens-cafe-radio_mp3">Kredens Cafe Radio</option>
-<option value="http://radio.svoboda.fm:5555/128.mp3">СВОБОДА FM ЧЕРНІГІВ</option>
-<option value="http://78.154.164.191:18001/4">ХІТ ОХТИРКА</option>
-<option value="http://eu2.radioboss.fm:8030/stream">СУБМАРИНА</option>
-<option value="http://91.193.83.103:8000/radiolozova">ЛОЗОВА</option>
-<option value="http://server.rpr.dp.ua:8000/live">ВЕЧІРНІЙ БРИЗ ДНІПРО</option>
-<option value="https://c15.radioboss.fm:18306/stream">БАРАБАН</option>
-<option value="https://rockradioua.online:8433/kuznya256">ГАРТА ХЕРСОН</option>
-<option value="http://online.odessa.fm:8000/stream">ОДЕСА-МАМА</option>
-<option value="https://streamingv2.shoutcast.com:443/uiradio">НЕЗАЛЕЖНЕ ЧИКАГО</option>
-<option value="http://listen7.myradio24.com:9000/23072">НА ХВИЛІ КОРСУНЯ</option>
-<option value="https://myrhorodfm.com.ua:443/">МИРГОРОД ФМ</option>
-<option value="http://195.211.212.82:8008/ns1024.mp3">НОСТАЛЬЖІ НІКОПОЛЬ</option>
-<option value="http://usa8.fastcast4u.com:5453/;">Ukie Drive ЧИКАГО</option>
-<option value="http://air.aristocrats.fm:8000/live2">АРИСТОКРАТИ</option>
-<option value="http://kotelva.pp.ua:2020/live">КОТЕЛЬВА ФМ</option>
-<option value="https://listen6.myradio24.com:443/radioarsi">АРСІ АРЦИЗ</option>
-<option value="https://cdn.vsnw.net:8943/kyiv_fm_128k">КИЇВ ФМ</option>
-<option value="https://cdn.vsnw.net:8943/kyiv_fm_pop_192k">КИЇВ FM - ШЛЯГЕР</option>
-<option value="http://62.149.12.197:8000/eradio">Є! РАДІО</option>
-<option value="https://stream.emradio.com.ua:8080/appradio">ЕМІГРАНТСЬКЕ</option>
-<option value="http://music.myradio.ua:8000/ukrainian_wedding128.mp3">УКРАЇНСЬКЕ ВЕСІЛЛЯ</option>
-<option value="http://178.136.125.252:8000/duzhefm">ДУЖЕ РАДІО</option>
-<option value="http://195.234.148.52:8000/;">СВІТ FM</option>
-<option value="http://live.uafm.org:9443/UAFM">UA FM</option>
-<option value="http://109.68.47.66:8080/stream64">Радіо Магнолія</option>
-<option value="https://live.bumblebeefm.ru:8000/newday">Радіо Новий день</option>
-<option value="https://cast.brg.ua:443/businessradio96.aacp">БІЗНЕС РАДІО</option>
-<option value="http://air.ofr.fm:8012/;">Old Fashioned Radio. Rock</option>
-<option value="http://icecastlv.luxnet.ua:8000/nostalgie">Nostalgie Київ</option>
-<option value="http://178.93.125.230:8000/newday.mp3">NewDay FM</option>
-<option value="https://avers.pp.ua:443/hls_radio/efir.m3u8">АВЕРС FM</option>
-<option value="http://air.ofr.fm:8004/;">ЗЕМЛЯ</option>
-<option value="http://stream.mjoy.ua:8000/radio-medicover">Ю-РАДІО</option>
-<option value="http://streamer.radio.co/sdff2fd6a8/listen">URC RADIO</option>
-<option value="https://stream.topradio.in.ua:443/topradio.mp3">ТОП РАДІО КАМЯНСЬКЕ</option>
-<option value="https://stream.sunfmua.com:8443/gold">SUN FM - ЗОЛОТІ ХІТИ</option>
-<option value="https://starfm.com.ua:8080/live">STAR FM</option>
-<option value="http://176.102.194.71:44808/radio">RELIFE</option>
-<option value="http://www.listen.radioex.in.ua:8043/nonstop">RADIOEX</option>
-<option value="http://136.243.158.56:8000/online">RADIO1.UA</option>
-<option value="http://online.radioroks.ua/RadioROKS_HD">РАДІО РОКС</option>
-<option value="http://62.80.190.247:8001/NRK128">РАДІО МАЯМІ</option>
-<option value="http://online.radiojazz.ua/RadioJazz_HD">RADIO JAZZ</option>
-<option value="http://stream.mjoy.ua:8000/radio-egoisty">Radio EgoЇсти</option>
-<option value="http://194.54.160.148:8000/stream">Radio City</option>
-<option value="http://stream.mjoy.ua:8000/radio-sweeter">Radio Coffee</option>
-<option value="http://online.1019.kr.ua:8000/radio">Radio BumbleBee</option>
-<option value="http://radio.svoboda.fm:5555/256.mp3">ONE FM ЧЕРНІГІВ</option>
-<option value="https://stream.blits-fm.ua:443/stream320">БЛІЦ ФМ БІЛА ЦЕРКВА</option>
-<option value="https://freeuk21.listen2myradio.com:443/live.mp3?typeportmount=s2_27108_stream_550262372">БАЛТА FM</option>
-<option value="https://video.onet.zp.ua:8443/azovwave.aac">АЗОВСЬКА ХВИЛЯ</option>
-<option value="https://cast.more.fm:443/more256">More.fm Одеса</option>
-<option value="http://garmonia-stream.fakel.com.ua/1">ГАРМОНІЯ МІРА ОДЕСА</option>
-<option value="http://195.138.81.134:8000/radio2-256">ГРАД FM ОДЕСА</option>
-<option value="http://62.80.190.246:8000/PRK128">Просто Radi.O</option>
-<option value="http://195.138.92.174:8001/live">Перше міське радіо Одеса</option>
-<option value="http://www.mixfm.com.ua:8192/;">MIX FM ОДЕСА</option>
-<option value="http://1037.izyum.net.ua/1-Klassnoe-Radio-Izyum-103.7FM-Stereo-VBR-256k.ogg">Радіо Клас! ІЗЮМ</option>
-<option value="http://195.138.73.30:8000/;">АККЕРМАН FM</option>
-<option value="http://stream.zeno.fm/ug59eq099yzuv">LIQUI RADIO КИЇВ</option>
-<option value="http://radio.mfm.ua/online128">M-FM</option>
-<option value="https://cast.brg.ua:443/djfm96.aacp">DJ FM</option>
-<option value="http://wp6150.ddns.mksat.net:8000/stream.mp3">Deep Pulse Radio</option>
-<option value="https://s2.radio.co:443/sd54b7044e/listen">I-X.LIVE Київ</option>
-<option value="https://stream.zeno.fm:443/nkeaps48xg0uv">Happy Radio</option>
-<option value="http://stream.mjoy.ua:8000/radio-great">Greatest Song Radio</option>
-<option value="http://77.120.162.12:8000/live320">GIKRadio ХАРКІВ</option>
-<option value="http://195.138.81.134:8000/radio1-256">FM 1 Перше радіо</option>
-<option value="https://online.radioplayer.ua:443/FlashRadio">Flash Radio</option>
-<option value="https://stream.radio.co:443/s4360dbc20/listen">COMA FM</option>
-<option value="https://stream.brokenbeats.net:443/radiosource">Brokenbeats.net</option>
-<option value="http://radio.bloger.fm:8004/blogerfm-256">Bloger.FM КИЇВ</option>
-<option value="http://listen6.myradio24.com:9000/abn">ABN Radio</option>
-<option value="https://c18.radioboss.fm:18146/stream">20ft Radio Київ</option>
-<option value="https://tim-fm.tim.ua:443/mp3">ТІМ ПРИЛУКИ</option>
-<option value="http://193.107.134.212:8000/live">ТрансСвітове Радіо</option>
-<option value="https://radioformat.pp.ua:443/radio1">Формат FM (Запоріжжя)</option>
-<option value="http://195.66.65.145:8000/98fm">ГОЛОС ГОРОДИЩИНИ</option>
-<option value="http://91.204.133.21:8000/stream">ДАНІ FM БАЛАКЛІЯ</option>
-<option value="http://212.1.95.94:8000/EkvatorFM">ЕКВАТОР FM ШПОЛА</option>
-<option value="https://us4freenew.listen2myradio.com:443/live.mp3?typeportmount=s1_17442_stream_224486695">ЕКСПРЕС РАДІО КОНОТОП</option>
-<option value="https://cast.brg.ua:443/shanson96.aacp">ШАНСОН</option>
-<option value="https://rockradioua.online:8433/rockradio256">РОКРАДІО UA ХЕРСОН</option>
-<option value="http://radio.ukraudio.com:8000/channel1">РОДИННЕ РАДІО</option>
-<option value="http://31.131.18.66:8000/ritm-mp3-320">РИТМ FM</option>
-<option value="http://91.134.147.168:10058/stream">РЕКОРД FM</option>
-<option value="http://stream.radiom.org.ua:8020/mp3_high">РАДІО М</option>
-<option value="http://listen6.myradio24.com:9000/95451">Радіо Респект Київ</option>
-<option value="http://complex.in.ua/onairzp">Радіо Проспект Запоріжжя</option>
-<option value="http://s0.radioheart.ru:8000/RH34237">ПРИМОРКА FM БЕРДЯНСЬК</option>
-<option value="http://main.inf.fm:9101/;">Informator FM Дніпро</option>
-<option value="https://onair.gorodfm.com.ua:443/OnAir">ГОРОД FM КРИВИЙ РІГ</option>
-<option value="https://onair.kryvbas.fm:443/RadioKryvbas">КРИВБАС</option>
-<option value="http://31.131.101.101:8000/320">САМАРА ПАВЛОГРАД</option>
-<option value="https://service.ptrk.tv:8443/PTRK">ПТРК ПАВЛОГРАД</option>
-<option value="http://radio.bestfm.fm:8080/bestfm_mp3">Best FM Маріуполь</option>
-<option value="http://176.101.223.52:8000/klassnoe">Радіо Клас! Словянськ</option>
-<option value="https://radio.freeradio.com.ua:443/stream.mp3">Вільне радіо БАХМУТ</option>
-<option value="https://radio.freeradio.com.ua:443/fallback.ogg">ВІЛЬНЕ РАДІО БАХМУТ</option>
-<option value="http://212.26.146.50:8000/rock.mp3">КРАМАТОРСЬК ONLINE</option>
-<option value="http://134.249.255.98:8000/terra">ТЕРРА ЛОЗОВА</option>
-<option value="http://176.109.222.69:11290/live">49 Паралель Кремінна</option>
-<option value="https://cast.radiogroup.com.ua:443/terrace320">Lounge FM Terrace</option>
-<option value="http://online.radiorelax.ua/RadioRelax_Christmas_HD">Relax Музика зимових свят</option>
-<option value="http://online.radiorelax.ua/RadioRelax_Int_HD">Relax International</option>
-<option value="http://online.radiorelax.ua/RadioRelax_Instrumental_HD">Relax Instrumental</option>
-<option value="http://online.radiorelax.ua/RadioRelax_Cafe_HD">Relax Cafe</option>
-<option value="http://91.205.207.98:8081/Ukrhit.mp3">Радіо 10 Українські Хіти Чернівці</option>
-<option value="http://91.205.207.98:8081/Terrasa.mp3">Радіо 10 Терраса Чернівці</option>
-<option value="http://91.205.207.98:8083/zahhit.mp3">Радіо 10 Західні Хіти Чернівці</option>
-<option value="https://cast.radiogroup.com.ua:443/disko_pt320">Пятниця Диско</option>
-<option value="https://online.melodiafm.ua:443/MelodiaFM_Disco">Мелодія FM Disco</option>
-<option value="http://online.melodiafm.ua/MelodiaFM_Int_HD">Мелодія FM International</option>
-<option value="https://online.melodiafm.ua:443/MelodiaFM_Romantic">Мелодія FM Romantic</option>
-<option value="https://cast.radiogroup.com.ua:443/retro_romantic320">Ретро FM Romantic</option>
-<option value="https://cast.radiogroup.com.ua:443/retro_dance320">Ретро FM Dance</option>
-<option value="http://212.26.146.50:8000/blues.mp3">СВОЄ Радіо - Blues</option>
-<option value="http://212.26.146.50:8000/electro.mp3">СВОЄ Радіо - Electro Swing</option>
-<option value="http://212.26.146.50:8000/trance.mp3">СВОЄ Радіо - Psychedelic Trance</option>
-<option value="http://online.hitfm.ua/HitFM_Best_HD">Хіт FM Найбільші хіти</option>
-<option value="http://online.hitfm.ua/HitFM_Top_HD">Хіт FM Сучасні хіти</option>
-<option value="http://online.hitfm.ua/HitFM_Ukr_HD">Хіт FM Українські хіти</option>
-<option value="http://online.nasheradio.ua/ukr">Наше Радіо УкрТоп100</option>
-<option value="http://91.218.213.49:8000/ur1-te-mp3">UA:Українське Радіо - Тернопіль</option>
-<option value="http://91.218.213.49:8000/ur1-if-mp3">UA:Українське Радіо - Карпати</option>
-<option value="http://91.218.213.49:8000/ur1-lv-mp3">UA:Українське Радіо - Львів</option>
-<option value="http://91.218.213.49:8000/ur1-rv-mp3">UA:Українське Радіо - Рівне</option>
-<option value="http://91.218.213.49:8000/pulsfm-mp3">UA:Українське Радіо - Пульс</option>
-<option value="http://live.radioec.com.ua:8000/drimayko">ДРІМАЙКО КАЗКИ</option>
-<option value="http://91.218.213.49:8000/kazka-mp3">UA:КАЗКИ</option>
-<option value="http://online.svitle.org:6728/fm">ЕММАНУЇЛ</option>
-<option value="http://server.gradleva.com:8888/radio">ГРАД ЛЕВА</option>
-<option value="http://stream.hope.ua:7777/golos/256">ГОЛОС НАДІЇ</option>
-<option value="http://91.203.4.121:8000/stream160">РАДІО МАРІЯ</option>
-<option value="http://online.radiosvitanok.org.ua:8000/live">СВІТАНОК ТЕРНОПІЛЬ</option>
-<option value="http://109.251.68.104:8000/stream">ДЗВОНИ ФРАНКІВСЬК</option>
 </select>
 <br><br>
-<button onclick="send('http://192.168.1.11/httpapi.asp?command=setPlayerCmd:play');" width="40%">Play</button>
-<button onclick="send('http://192.168.1.11/httpapi.asp?command=setPlayerCmd:pause');" width="40%">Pause</button>
+<button onclick="send('setPlayerCmd:play');" width="40%">Play</button>
+<button onclick="send('setPlayerCmd:pause');" width="40%">Pause</button>
 <br><br>
 <label for="slider">Volume</label>
 <input type= "range" class="slider" id="slider" value="0" maxlength="100" width="100%">
 <br><br>
 <label for="playlist">M3U Playlist URL:</label><br>
 <input type="url" name="playlist" id="playlist" placeholder="http://example.com/playlist.m3u">
-<button onclick="send('http://192.168.1.11/httpapi.asp?command=setPlayerCmd:playlist:' + document.getElementById('playlist').value + ':<m3u>');">Load</button>
+<button onclick="send('setPlayerCmd:playlist:' + document.getElementById('playlist').value + ':m3u');">Load</button>
 <br><br>
-<button onclick="send('http://192.168.1.11/httpapi.asp?command=setPlayerCmd:prev');">< Prev</button>
-<button onclick="send('http://192.168.1.11/httpapi.asp?command=setPlayerCmd:next');">Next ></button>
+<button onclick="send('setPlayerCmd:prev');">< Prev</button>
+<button onclick="send('setPlayerCmd:next');">Next ></button>
 <br><br>
 <label for="url">Stream URL:</label><br>
 <input type="url" name="url" id="url" placeholder="http://example.com/stream">
 <button onclick="play(document.getElementById('url').value);">Play</button>
 <br><br><br>
-<button onclick="send('http://192.168.1.11/httpapi.asp?command=setPlayerCmd:switchmode:wifi');">WiFi</button>
-<button onclick="send('http://192.168.1.11/httpapi.asp?command=setPlayerCmd:switchmode:bluetooth');">BT</button>
-<button onclick="send('http://192.168.1.11/httpapi.asp?command=setPlayerCmd:switchmode:line-in');">AUX</button>
-<button onclick="send('http://192.168.1.11/httpapi.asp?command=setPlayerCmd:switchmode:optical');">SPDIF</button>
-<button onclick="send('http://192.168.1.11/httpapi.asp?command=setPlayerCmd:switchmode:UDISK');">Micro SD</button>
+<button onclick="send('setPlayerCmd:switchmode:wifi');">WiFi</button>
+<button onclick="send('setPlayerCmd:switchmode:bluetooth');">BT</button>
 <br><br><br>
 opencartbot &copy; 2021
 <script type="text/javascript">
-
-	function send(theUrl)
-	{
-		var xmlHttp = new XMLHttpRequest();
-		xmlHttp.open( "GET", theUrl, true );
-		//xmlHttp.setRequestHeader('Access-Control-Allow-Origin', '*');
-		xmlHttp.send( null );
-		return false;
-	}
-
-	function play(url) {
-		send('http://192.168.1.11/httpapi.asp?command=setPlayerCmd:play:'+url);
-	}
-
-	function volume(value) {
-		send('http://192.168.1.11/httpapi.asp?command=setPlayerCmd:vol:'+value);
-	}
-
 	slider.oninput = () => {
 		setTimeout(volume, 500, slider.value);
 	}
-
 </script>
 </body>
 </html>
