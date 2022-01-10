@@ -7,16 +7,16 @@
 <title>PlayBot</title>
 <script type="text/javascript">
 
-	var speaker_ip = '192.168.1.11';  // CHANGE TO YOUR DEVICE IP
+	var speaker_ip = '192.168.1.11';	// CHANGE TO YOUR DEVICE IP
 
 	var radio_api = 'http://'+speaker_ip+'/httpapi.asp?command=';
 
 	function send(command)
 	{
-		var xmlHttp = new XMLHttpRequest();
+		var xhr = new XMLHttpRequest();
 		url = radio_api + command;
-		xmlHttp.open( "GET", url, true );
-		xmlHttp.send( null );
+		xhr.open("GET", url, true);
+		xhr.send(null);
 		return false;
 	}
 
