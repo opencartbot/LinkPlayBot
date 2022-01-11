@@ -4,12 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>PlayBot</title>
+<title>LinkPlayBot</title>
 <script type="text/javascript">
+	if (localStorage.getItem('device_ip')) {
+		var dev_ip = localStorage.getItem('device_ip');
+	} else {
+		var dev_ip = '192.168.1.1';
+	}
 
-	var speaker_ip = '192.168.1.11';	// CHANGE TO YOUR DEVICE IP
-
-	var radio_api = 'http://'+speaker_ip+'/httpapi.asp?command=';
+	var radio_api = 'http://'+dev_ip+'/httpapi.asp?command=';
 
 	function send(command)
 	{
@@ -28,6 +31,12 @@
 	function volume(value) {
 		command = 'setPlayerCmd:vol:'+value;
 		send(command);
+	}
+
+	function save_ip(device_ip) {
+		localStorage.setItem('device_ip', device_ip);
+		var dev_ip = device_ip;
+		location.reload();
 	}
 </script>
 <style>
@@ -58,14 +67,23 @@
 </head>
 
 <body>
-<h1>PlayBot</h1>
-<label for="radio">Radio:</label>
+<h1>LinkPlayBot</h1>
+<label for="device_ip">Device IP:</label><br>
+<input type="text" name="device_ip" id="device_ip" placeholder="192.168.1.1" value="">
+<button onclick="save_ip(document.getElementById('device_ip').value);">Save</button>
+<br><br>
+<label for="radio">Station:</label>
 <select name="radio" id="radio" onchange="play(this.value)">
-<option value="http://icecastlv.luxnet.ua/lux_mp3">ЛЮКС FM</option>
-<option value="http://online.hitfm.ua/HitFM_HD">ХІТ FM</option>
-<option value="http://online.nasheradio.ua/NasheRadio_HD">НАШЕ РАДІО</option>
-<option value="https://cast.radiogroup.com.ua:443/retro">РЕТРО FM</option>
-<option value="http://icecast.luxnet.ua/maximum_mp3">МАКСИМУМ</option>
+<option value="https://cast.brg.ua:443/powerfm96.aacp">POWER FM</option>
+<option value="http://online.kissfm.ua/KissFM_HD">KISS FM</option>
+<option value="https://cast.radiogroup.com.ua:443/nrj320">RADIO NRJ</option>
+<option value="http://listen6.myradio24.com:9000/5390">KEXXX FM</option>
+<option value="https://cast.radiogroup.com.ua:443/jamfm320">JAM FM</option>
+<option value="https://cast.radiogroup.com.ua:443/loungefm320">LOUNGE FM</option>
+<option value="https://cast.radiogroup.com.ua:443/chillout320">Chill Out</option>
+<option value="http://online.radiorelax.ua/RadioRelax">RELAX</option>
+<option value="https://listen5.myradio24.com:443/atmo">ATMOSFERA</option>
+<option value="http://radio.ukraudio.com:8000/channel2">NISAJA</option>
 </select>
 <br><br>
 <button onclick="send('setPlayerCmd:play');" width="40%">Play</button>
@@ -87,11 +105,13 @@
 <br><br><br>
 <button onclick="send('setPlayerCmd:switchmode:wifi');">WiFi</button>
 <button onclick="send('setPlayerCmd:switchmode:bluetooth');">BT</button>
+<button onclick="send('setPlayerCmd:switchmode:line-in');">AUX</button>
 <br><br><br>
 opencartbot &copy; 2021
 <script type="text/javascript">
-	slider.oninput = () => {
-		setTimeout(volume, 500, slider.value);
+	document.getElementById('device_ip').value = dev_ip;
+	slider.onchange = () => {
+		volume(slider.value);
 	}
 </script>
 </body>
