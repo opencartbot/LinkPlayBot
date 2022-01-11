@@ -1,20 +1,20 @@
-# PlayBot
+# LinkPlayBot
 A simple interface for controlling Internet radio based on the LinkSprite chipset using any computer, tablet or smartphone.
 Allows you to play any custom streams and add your own m3u playlists, control the volume, switch modes.
 Works via HTTP GET requests on a single network.
 
 ## Listing
 - **index.html** - web interface for control player via LinkPlay API. Works on any browsers. Does not require a web server. To get started, replace the device IP-address 192.168.1.11 to your value.
-- **playbot.apk** - Android application for control player via LinkPlayAPI. To get started, change .apk extension to .zip, open path in archive /assets/index.html and replace the device IP-address 192.168.1.11 to your value and update archive. Change back archive extension to .apk and intstall this file on your Android.
+- **linkplaybot.apk** - Android application for control player via LinkPlayAPI. To get started, change .apk extension to .zip, open path in archive /assets/index.html and replace the device IP-address 192.168.1.11 to your value and update archive. Change back archive extension to .apk and intstall this file on your Android.
 
 Also contains a playlist of ukrainian radio stations, you can change his in html code in "select" tag.
 
 ## Screenshots
 Web Interface<br>
-![WEB DEMO](https://github.com/opencartbot/PlayBot/blob/6e04a2ecf688df73d4bb6892f3ac8f49cd69474f/screenshots/web.jpg)
+![WEB DEMO](https://github.com/opencartbot/LinkPlayBot/blob/6e04a2ecf688df73d4bb6892f3ac8f49cd69474f/screenshots/web.jpg)
 
 Android app<br>
-![APK DEMO](https://github.com/opencartbot/PlayBot/blob/6e04a2ecf688df73d4bb6892f3ac8f49cd69474f/screenshots/apk.jpg)
+![APK DEMO](https://github.com/opencartbot/LinkPlayBot/blob/6e04a2ecf688df73d4bb6892f3ac8f49cd69474f/screenshots/apk.jpg)
 
 ## Other applications for control LinkPlay wireless speakesrs
 - **WiiM Home**
