@@ -102,6 +102,14 @@
 <label for="url">Stream URL:</label><br>
 <input type="url" name="url" id="url" placeholder="http://example.com/stream">
 <button onclick="play(document.getElementById('url').value);">Play</button>
+<br><br>
+Preset
+<button onclick="send('MCUKeyShortClick:1');">1</button>
+<button onclick="send('MCUKeyShortClick:2');">2</button>
+<button onclick="send('MCUKeyShortClick:3');">3</button>
+<button onclick="send('MCUKeyShortClick:4');">4</button>
+<button onclick="send('MCUKeyShortClick:5');">5</button>
+<button onclick="send('MCUKeyShortClick:6');">6</button>
 <br><br><br>
 <button onclick="send('setPlayerCmd:switchmode:wifi');">WiFi</button>
 <button onclick="send('setPlayerCmd:switchmode:bluetooth');">BT</button>
