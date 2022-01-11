@@ -11,10 +11,10 @@ Also contains a playlist of radio stations, you can change his in html code in "
 
 ## Screenshots
 Web Interface<br>
-![WEB DEMO](https://github.com/opencartbot/LinkPlayBot/blob/6e04a2ecf688df73d4bb6892f3ac8f49cd69474f/screenshots/web.jpg)
+![WEB DEMO](https://github.com/opencartbot/LinkPlayBot/blob/6e04a2ecf688df73d4bb6892f3ac8f49cd69474f/web.jpg)
 
 Android app<br>
-![APK DEMO](https://github.com/opencartbot/LinkPlayBot/blob/6e04a2ecf688df73d4bb6892f3ac8f49cd69474f/screenshots/apk.jpg)
+![APK DEMO](https://github.com/opencartbot/LinkPlayBot/blob/6e04a2ecf688df73d4bb6892f3ac8f49cd69474f/apk.jpg)
 
 ## Other applications for control LinkPlay wireless speakesrs
 - **WiiM Home**
