@@ -1,5 +1,5 @@
 # LinkPlayBot
-A unofficial simple interface for controlling Internet radio based on the LinkSprite chipset using any computer, tablet or smartphone.
+A simple unofficial interface for controlling Internet Radio speakers based on the LinkSprite chipset using any computer, tablet or smartphone.
 Allows you to play any custom streams and add your own m3u playlists, control the volume, switch modes.
 Works via [LinkPlayAPI](https://github.com/n4archive/LinkPlayAPI/blob/master/api.md) by HTTP GET requests on a single network.
 
