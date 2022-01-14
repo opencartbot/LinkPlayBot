@@ -16,7 +16,7 @@ Web Interface<br>
 Android app<br>
 ![APK DEMO](https://github.com/opencartbot/LinkPlayBot/blob/main/apk.jpg)
 
-## Other applications for control LinkPlay wireless speakesrs
+## Other applications for control LinkPlay wireless speakers
 - **WiiM Home**
 - **WiiM Player**
 - **AudioCast S**
